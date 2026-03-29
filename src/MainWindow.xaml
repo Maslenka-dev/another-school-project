@@ -1,0 +1,87 @@
+﻿<Window x:Class="ProductivityTimer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Таймер продуктивности"
+        Width="1236"
+        Height="700"
+        MinWidth="1236"
+        MinHeight="700"
+        Icon="Assets/AppIcon.ico"
+        WindowStartupLocation="CenterScreen"
+        Closing="OnClosing">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0"
+                Background="{StaticResource SidebarBackgroundBrush}"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="0,0,1,0">
+            <DockPanel Margin="28,28,24,28">
+                <StackPanel DockPanel.Dock="Top"
+                            Margin="0,0,0,12">
+                    <TextBlock Text="Разделы"
+                               Style="{StaticResource PageTitleTextStyle}" />
+                </StackPanel>
+
+                <ListBox ItemsSource="{Binding NavigationItems}"
+                         SelectedItem="{Binding SelectedNavigationItem, Mode=TwoWay}"
+                         Background="Transparent"
+                         BorderThickness="0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Margin="4"
+                                       FontSize="16"
+                                       FontWeight="SemiBold"
+                                       Text="{Binding Title}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+        </Border>
+
+        <Grid Grid.Column="1"
+              Margin="32,28,32,32">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Margin="0,0,0,24">
+                <TextBlock Text="{Binding CurrentSectionTitle}"
+                           Style="{StaticResource PageTitleTextStyle}" />
+                <TextBlock Text="{Binding CurrentSectionDescription}">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock" BasedOn="{StaticResource HelperTextStyle}">
+                            <Setter Property="Margin" Value="0,8,0,0" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding CurrentSectionDescription}" Value="">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </StackPanel>
+
+            <ContentControl Grid.Row="1"
+                            Content="{Binding CurrentViewModel}" />
+        </Grid>
+    </Grid>
+</Window>
+
+
+
+
+
+
+
+
+
+
+

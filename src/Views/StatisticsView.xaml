@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="ProductivityTimer.Views.StatisticsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <Border Style="{StaticResource CardBorderStyle}">
+                <TextBlock FontSize="28"
+                           FontWeight="SemiBold"
+                           Text="Рабочее время за текущий день" />
+            </Border>
+
+            <Grid Margin="0,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="16" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Style="{StaticResource MetricCardBorderStyle}">
+                    <StackPanel>
+                        <TextBlock Text="Завершённые Pomodoro"
+                                   Style="{StaticResource SectionTitleTextStyle}" />
+                        <TextBlock Margin="0,22,0,0"
+                                   Style="{StaticResource HeroValueTextStyle}"
+                                   Text="{Binding CompletedPomodoroCount}" />
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="2"
+                        Style="{StaticResource MetricCardBorderStyle}">
+                    <StackPanel>
+                        <TextBlock Text="Общее рабочее время"
+                                   Style="{StaticResource SectionTitleTextStyle}" />
+                        <TextBlock Margin="0,22,0,0"
+                                   Style="{StaticResource HeroValueTextStyle}"
+                                   FontSize="46"
+                                   Text="{Binding WorkedTimeTodayText}" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <Border Margin="0,20,0,0"
+                    Style="{StaticResource AccentCardBorderStyle}">
+                <StackPanel>
+                    <TextBlock Text="Дата статистики"
+                               Style="{StaticResource SectionTitleTextStyle}" />
+                    <TextBlock Margin="0,12,0,0"
+                               FontSize="24"
+                               FontWeight="SemiBold"
+                               Text="{Binding StatisticsDateText}" />
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

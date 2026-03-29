@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="ProductivityTimer.Views.StopwatchView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="360" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0"
+                    Style="{StaticResource CardBorderStyle}">
+                <StackPanel>
+
+                    <Border
+                            Style="{StaticResource AccentCardBorderStyle}">
+                        <StackPanel>
+                            <TextBlock Text="Состояние"
+                                       Style="{StaticResource FieldLabelTextStyle}" />
+                            <TextBlock Margin="0,8,0,0"
+                                       FontSize="22"
+                                       FontWeight="SemiBold"
+                                       Text="{Binding RunStateText}" />
+                        </StackPanel>
+                    </Border>
+
+                    <Grid Margin="0,20,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="12" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="12" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0"
+                                Content="Старт"
+                                Command="{Binding StartCommand}" />
+                        <Button Grid.Column="2"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                Content="Пауза"
+                                Command="{Binding PauseCommand}" />
+                        <Button Grid.Column="4"
+                                Style="{StaticResource SecondaryButtonStyle}"
+                                Content="Сброс"
+                                Margin="0"
+                                Command="{Binding ResetCommand}" />
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <StackPanel Grid.Column="2">
+                <Border Style="{StaticResource CardBorderStyle}">
+                    <StackPanel>
+                        <TextBlock Text="Прошедшее время"
+                                   Style="{StaticResource SectionTitleTextStyle}" />
+                        <TextBlock Margin="0,18,0,0"
+                                   Style="{StaticResource HeroValueTextStyle}"
+                                   FontSize="64"
+                                   Text="{Binding ElapsedTimeText}" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>
+
+
+
+
+
